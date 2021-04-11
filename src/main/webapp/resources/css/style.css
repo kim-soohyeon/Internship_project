@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great|Noticia+Text'); 
+
+body{font-size:14px;line-height: 21px;font-family: 'Noticia Text', sans-serif;}
+h1{
+    font-family: 'Fredericka the Great', cursive;
+    color:#fff;font-size:100px;line-height: 105px;font-style: italic;font-style: italic;
+}
+h2{
+    font-size:42px;line-height: 63px;color: #fff;font-weight: bold;
+}
+h3{
+    font-size:50px;line-height: 63px;margin-bottom:21px;
+}
+
+p{
+    margin-bottom:21px;
+}
+/* //Common-- */
+section:not(#home){
+    padding:80px 0 50px;
+}
+
+header#gnb{
+    position: fixed;left:0;right:0;top:0;height:60px; 
+    background: #fff;z-index:999;font-family: 'Fredericka the Great'; 
+}
+header#gnb ul.mainMenu li{
+    float:left; 
+    margin-right:80px; 
+}
+header#gnb ul.snsMenu li{
+    float:right;
+    margin-left:30px;
+}
+header#gnb ul.snsMenu li a{
+    font-size:25px;
+}
+
+header#gnb ul li a{
+    font-size:20px;display: block;line-height: 60px;color:#323232;
+}
+
+.blank{
+    height:600px;position: relative;z-index: 1; 
+}
+.blank:after{
+    content: '';
+    position: absolute;top:0;bottom:0;left:0;right:0;background: rgba(0,0,0,.4);z-index: 2;
+}
+.team{
+    background:url(../img/team.jpeg) no-repeat center center / cover;
+    background-attachment: fixed; 
+}
+
+
+/* home �겫占썽겫占� */
+section#home{
+    background:url(../img/homeBg.jpeg) no-repeat center center / cover;
+    height:800px;text-align:center;padding-top:150px;position:relative;z-index:1;
+}
+section#home:after{
+    content:'';top:0;bottom:0;left:0;right:0;z-index:-1;background:rgba(0,0,0,.4);position:absolute;
+}
+section#home .logoWrap{ 
+    margin-bottom:42px;
+}
+section#home .logoWrap img{width:100px;} 
+
+section#home .headTitle .star{
+    font-size:32px;color:rgba(250, 208, 0, 0.69);margin-bottom:63px;
+}
+section#home .headTitle h1{
+    margin-bottom:84px;
+}
+
+section#home .headTitle .TestBtn{
+    width:100%;
+    background-color: #2B2A4C;
+    border:none;
+    color:#fff;
+    padding:15px25px;
+    text-align:center;
+    text-decoration:none;
+    display:inline-block;
+    font-size:1.2em;
+    margin:4px;
+    cursor:pointer;
+    border-radius:10px;
+}
+.TestBtn:hover{
+	background--color:#4c4c49;
+	color:#fff;
+}
+
+/* //--About */
+.textWrap{
+    width:720px;height:750px;margin:auto;
+}
+h3{text-align:center;margin-bottom:63px;}
+
+/* //Schedule-- */
+.match .head{text-align: center;} 
+.match .head strong{display:block;} 
+.match .body:after{
+    content:'';display:block;clear:both; 
+}
+.match .body{display:flex;justify-content: center;} 
+.match .body > div{}
+.match .tail{background:#ebebeb;padding:10px;text-align:right;}
+
+.match .body > div.vs{height:132px;line-height: 132px;font-size:40px;margin:0 30px;}
+
+/* //All Schedule-- */
+.matchs .head{text-align: center;}
+.matchs .head strong{display:block;}
+.matchs .body{display:flex;justify-content: center;}
+.matchs .body > div.vs{height:132px;line-height: 132px;font-size:40px;margin:0 30px;}
+/* //test-- */
+.matchs .body > div.test{width : 500px; line-height:5px; font-style:italic;
+                          font-size:20px;text-align:left;}
+
+/* //Players -- */
+/*#players{} */
+.eachPlayer{
+    margin-bottom:27px;
+}
+
+.imgWrap img{width:100%;} 
+.player-info{color:#fff;} 
+.player-info > div{float:left;height:80px;transition:all 0.35s;} 
+.player-info .num{font-size:50px;line-height:80px;text-align:center;width:80px;background:#960707;}
+.player-info .text{
+    width:calc(100% - 80px);background:#cc3d3d; 
+    padding:14px;
+}
+
+
+.eachPlayer:hover .player-info .num{
+    background:#002266; 
+}
+.eachPlayer:hover .player-info .text{
+    background:#2312b7;
+}
+
+.player-info .text span{display:block;}  /* block 占쎄텢占쎌뒠占쎈릭筌롳옙 餓κ쑬而�饔낉옙 占쎈┷占쎈선 癰귣똻�뿫 */
+.player-info .text span.name{font-size:20px;line-height: 28px;} 
+.player-info .text span.position{font-size:15px;}
+
+
+/* //popup*/
+.pop{width:1000px; border:1px solid #000;margin:auto;position: absolute;top:15%;left:0;right:0;margin:auto;z-index:10;background:#fff;display:none;} /* display:none 筌띾슢諭억쭪占� 占쎈륫占쎌몵筌롳옙 占쎈뻻揶쏄낯�읅占쎌몵嚥∽옙 占쎈ご占쎈뻻 占쎈툧占쎈맙 */
+.pop .popWrap{background:#fff;padding-bottom:50px;}
+.pop .exit{position:absolute;width:50px;height:50px;line-height:44px;background:#fff;border:3px solid #000;color:#000;border-radius:50%;text-align: center;font-weight:bold;font-size:30px;box-sizing:border-box;right:-25px;top:-25px;cursor: pointer;}
+.pop:after{
+    content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:-1; /* 占쎈솚 筌≪럩�뵠 占쎌몛�⑨옙 占쎈�� 獄쏄퀗瑗랃옙�뱽 rgba 0,0,0.5 嚥∽옙 占쎄퐬占쎌젟*/
+}
+.pop .bg{
+    background:url(/img/bg1.jpg) no-repeat center center / cover;height:300px;padding:0 100px;
+}
+@keyframes show { /* 占쎈뻻占쎌삂占쎈퓠占쎄퐣 �겫占쏙옙苑� 占쎄국占쎄텊 占쎈르 繹먮슣占� 占쎈막占쎈빍筌롫뗄�뵠占쎈�� 占쎌읅占쎌뒠占쎈퉸雅뚯눖�뮉 占쎈꺗占쎄쉐 */
+    0%{opacity:0;left:-50px;} /*  占쎈뻻占쎌삂占쎈막 占쎈르 -50px占쎈퓠 占쎌맄燁삼옙 */
+    100%{opacity:1;left:0;} /*  占쎄국占쎄텊 占쎈르 0占쎈퓠 占쎌맄燁삼옙 */
+}
+.pop.start .bg span{animation-name: show;animation-fill-mode: forwards;} /* 占쎈막占쎈빍筌롫뗄�뵠占쎈�� 占쎌뵠�뵳袁⑹뱽 show嚥∽옙 筌욑옙占쎌젟 forwards占쎈뮉 疫꿸퀡�궚占쎈꺗占쎄쉐占쎌몵嚥∽옙 占쎈즼占쎈툡占쎌궎筌욑옙 占쎈륫�⑨옙 占쎄국 筌욑옙占쎌젎占쎈퓠占쎄퐣 筌롫뜆�뀭占쎈뼄 */
+.pop.start .bg span:nth-child(1){animation-duration: 1s;} /* span占쎈퓠 筌ｏ옙 甕곕뜆�럮 占쎌쁽占쎈뻼占쎌뒄占쎈꺖占쎌뵥 野껉퍔肉� 1�룯占� 筌욑옙占쎈꺗   */
+.pop.start .bg span:nth-child(2){animation-duration: 1s;animation-delay: 0.3s;} /* 占쎈턀占쎌쟿占쎌뵠 0.3�룯占� 椰꾨챷堉� 椰꾨챷堉긴빳占�*/
+.pop.start .bg span:nth-child(3){animation-duration: 1s;animation-delay: 0.5s;}
+
+.pop .bg span{color:#fff;display:block;position: relative;left:-50px;opacity:0;}
+.pop .bg span.num{padding:0 25px;;height:80px;line-height: 80px;font-size:60px;background:#960707;text-align:center;display:inline-block;margin-bottom:40px;margin-top:50px;font-weight:bold;}
+.pop .bg span.name{font-size:60px;margin-bottom:30px;font-weight:bold;}
+.pop .bg span.position{font-size:30px;}
+
+.pop .neck{width:800px;margin:0 auto 30px;border-bottom:1px solid #323232;}
+.pop .neck li{float:left;padding:0 15px;margin:30px 0; border-right:1px solid #ebebeb;}
+.pop .neck li:first-child{padding-left:0;}
+.pop .neck li strong{text-transform:uppercase;display:block;font-size:25px;} 
+
+/* .pop .neck .neckLink{display:block;float:right;line-height: 101px;font-size:30px;}
+
+.pop .content{width:800px;margin:auto;}
+
+.pop .content p{height:138px;overflow:hidden;transition:all 0.3s;} 
+.pop .content p.open{height:600px;} 
+
+/* read more �겫占썽겫占� */
+.pop .content .readMore{
+    line-height:50px;background:#ebebeb;text-align: center;
+    font-size:25px;cursor:pointer;transition:all 0.3s;
+} 
+/* read less �겫占썽겫占� */
+.pop .content .readMore:hover{
+    color:#fff;background:#960707;
+}
+/* //makers-- */
+#makers .eachMaker{text-align:center;}
+#makers .eachMaker .makerCircle{
+    width:234px;height:271px;background:silver;
+    border-radius:200px;overflow:hidden;margin:auto; 
+    position:relative;} 
+
+#makers .eachMaker .makerCircle img{width:100%;}
+#makers .eachMaker .makerCircle p{text-align:center;font-size:25px;position:absolute;top:10%;left:0;right:0;transition:all 0.35s;opacity:0;word-spacing: 20px;} /* word-spacing占쏙옙 占쎈툡占쎌뵠�굜�꼵而� 揶쏄쑨爰�//position �겫占썽겫占� 占쎌넞 absolute占쎌뵥筌욑옙?, opacity揶쏉옙 占쎈선占쎈샥 占쎌뒞�⑥눘�뵥筌욑옙?*/
+#makers .eachMaker .makerCircle p a{color:#FFFFFF;transition:all 0.2s;} /* 占쎈툡占쎌뵠�굜占� 占쎄퉳繹먲옙 占쎌뵛, */
+
+#makers .eachMaker .makerCircle:hover p{top:50%;opacity:1;} 
+#makers .eachMaker .makerCircle:hover p a{text-decoration:none;color:#FFFFFF;} 
+
+/* //-- */
+
+/* //-- */
+
+/* //-- */
+/* //-- */

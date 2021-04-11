@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inhatc.mapper.UserMapper">
+
+<insert id="register">
+	<selectKey keyProperty="userID" resultType="int" order="BEFORE">
+		SELECT usersequence.nextval 
+		FROM DUAL
+	</selectKey>
+	INSERT INTO "KSH"."user"(
+		"userName"
+		, "userID"
+		, "contact"
+		, "email"
+		, "address"
+		, "avaPnt"
+		, "savPnt"
+		, "gender"
+		, "age"
+		, "job"
+		, "regdate"
+		, "agree"
+		) VALUES(
+		#{userName}
+		, #{userID}
+		, pkg_crypto.encrypt(#{contact})
+		, pkg_crypto.encrypt(#{email})
+		, #{address}
+		, #{avaPnt}
+		, #{savPnt}
+		, #{gender}
+		, #{age}
+		, #{job}
+		, #{regdate}
+		, #{agree})
+</insert>
+
+<select  id="getUserInfo" resultType="com.inhatc.domain.UserVO">
+	SELECT "userID", substr("userName",1,1) || lpad('*',length("userName")-2,'*') || substr("userName", length("userName"), 1) AS "userName",REGEXP_REPLACE(pkg_crypto.decrypt("contact"), '^(02|031|032|033|041|042|043|051|052|053|054|055|061|062|063|064|010|011|016|017|018|019|070|080)(.*)(....)$', '\1****\3' )"contact",pkg_crypto.decrypt("email")as "email", "avaPnt"
+	FROM "KSH"."user"
+	WHERE "userName"=#{userName} and pkg_crypto.decrypt("contact") =#{contact}
+</select>
+
+<select  id="getUserDetailInfo2" resultType="com.inhatc.domain.UserVO">
+	SELECT "userID", substr("userName",1,1) || lpad('*',length("userName")-2,'*') || substr("userName", length("userName"), 1) AS "userName",REGEXP_REPLACE(pkg_crypto.decrypt("contact"), '^(02|031|032|033|041|042|043|051|052|053|054|055|061|062|063|064|010|011|016|017|018|019|070|080)(.*)(....)$', '\1****\3' )"contact",pkg_crypto.decrypt("email")as "email", "address", "avaPnt", "savPnt", "gender", "age", "job", "regdate", "agree"
+	FROM "KSH"."user"
+	WHERE "userID"=#{userID}
+</select>
+
+<insert id="pro_register"> 
+	INSERT INTO "KSH"."RULE"(
+		ruleId
+		, pName
+		, pCode
+		, more
+		, under
+		, pntValue
+	) VALUES (
+		rulesequence.nextval
+		, #{pName}
+		, #{pCode}
+		<if test='more == "min"'>
+			, null
+		</if>
+		<if test='more != "min"'>
+			, TO_NUMBER(#{more})
+		</if>
+		<if test='under == "max"'>
+			, null
+		</if>
+		<if test='under != "max"'>
+			, TO_NUMBER(#{under})
+		</if>
+		,  TO_NUMBER(#{pntValue})	
+	)
+</insert>
+
+<insert id="pro_register2"> 
+	INSERT INTO "KSH"."PROM"(pCode, pName, stadate, enddate)
+	VALUES(#{pCode}, #{pName}, #{stadate}, #{enddate})
+</insert>
+
+<select  id="getPromotion" resultType="com.inhatc.domain.PromVO">
+	SELECT * FROM "KSH"."PROM"
+</select>
+
+<select  id="getRule" resultType="com.inhatc.domain.RuleVO">
+	SELECT * FROM "KSH"."RULE"
+</select>
+
+<update id="promotionUpdate" parameterType="map" >
+	UPDATE PROM SET pName=#{pName}, stadate=#{stadate}, enddate=#{enddate} WHERE pCode =#{pCode}
+</update>
+
+<update id="ruleUpdate" parameterType="map" >
+	UPDATE RULE SET pName=#{pName}, pntValue=#{pntValue}, more=#{more}, under=#{under} WHERE pCode =#{pCode}
+</update>
+
+<select  id="getPntValue" resultType="java.util.HashMap">
+<![CDATA[
+	select p.PNAME, p.PCODE, r.PNTVALUE 
+	from PROM p , RULE r 
+	where p.PCODE = r.PCODE 
+	AND(
+	(r.UNDER IS NULL AND r.MORE IS NULL)
+	OR
+	(r.UNDER IS NULL AND r.MORE IS NOT NULL AND r.MORE<=#{pay})
+	OR
+	(r.MORE IS NULL AND r.UNDER IS NOT NULL AND r.UNDER>#{pay})
+	OR
+	(r.UNDER IS NOT NULL AND r.MORE IS NOT NULL AND r.UNDER>#{pay} AND r.MORE<=#{pay}))
+	AND(
+	(p.stadate IS NULL AND p.enddate IS NOT NULL AND (p.enddate>=#{day}))
+	OR
+	(p.enddate IS NULL AND p.stadate IS NOT NULL AND (p.stadate<=#{day}))
+	OR
+	(#{day} between p.stadate and p.enddate)
+	OR
+	(p.stadate IS NULL AND p.enddate IS NULL))
+]]>
+</select>
+
+<insert id="pointRegister"> 
+	INSERT INTO point(pointID, pCode, pName, savPnt,HISID)
+	VALUES(pointsequence.nextval, #{pCode}, #{pName}, #{savPnt},#{hisId})
+</insert>
+
+
+<insert id="historyRegister">
+	<selectKey keyProperty="hisId" resultType="int" order="BEFORE">
+	SELECT historysequence.nextval FROM DUAL
+	</selectKey>
+	INSERT INTO history(HISID, userID, userName, dPnt, hisdate, histime, pntType)
+	VALUES(#{hisId}, #{userId}, #{userName}, #{dPnt}, #{hisdate}, #{histime}, #{pntType})
+</insert>
+
+<update id="updateUserPoint" parameterType="int">
+	UPDATE "KSH"."user" SET "avaPnt"="avaPnt"+#{dPnt2}, "savPnt"="savPnt"+#{dPnt2} WHERE "userID"=#{userID}
+</update>
+
+<update id="updateUserPoint2" parameterType="int">
+	UPDATE "KSH"."user" SET "avaPnt"="avaPnt"-#{point2} WHERE "userID"=#{userID}
+</update>
+
+<select  id="getuserHistory" parameterType="String" resultType="java.util.HashMap">
+	SELECT hisdate, histime, pntType, dPnt
+	FROM history
+	WHERE userID=#{userID}
+	ORDER BY hisdate DESC, histime DESC
+</select>
+
+<select  id="getHistory" parameterType="String" resultType="java.util.HashMap">
+	SELECT *
+	FROM history
+	WHERE hisdate between ${stadate} and ${enddate}
+	ORDER BY hisdate DESC, histime DESC
+</select>
+
+<select  id="paymentDetail" parameterType="com.inhatc.domain.HisVO" resultType="java.util.HashMap">
+	SELECT h.hisdate as hisdate, h.histime as histime, p.pname as pname, p.pcode as pcode, p.savpnt as savpnt
+	FROM point p, history h
+	WHERE p.HISID = h.HISID 
+	AND p.HISID = ${hisId}
+	ORDER BY h.hisdate DESC, h.histime DESC
+</select>
+
+</mapper>

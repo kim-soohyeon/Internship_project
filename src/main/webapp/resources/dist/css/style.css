@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great|Noticia+Text'); 
+
+body{font-size:14px;line-height: 21px;font-family: 'Noticia Text', sans-serif;}
+h1{
+    font-family: 'Fredericka the Great', cursive;
+    color:#fff;font-size:100px;line-height: 105px;font-style: italic;font-style: italic;
+}
+h2{
+    font-size:42px;line-height: 63px;color: #fff;font-weight: bold;
+}
+h3{
+    font-size:50px;line-height: 63px;margin-bottom:21px;
+}
+p{
+    margin-bottom:21px;
+}
+/* //Common-- */
+section:not(#home){
+    padding:80px 0 50px;
+}
+
+header#gnb{
+    position: fixed;left:0;right:0;top:0;height:60px; 
+    background: #fff;z-index:999;font-family: 'Fredericka the Great'; 
+}
+header#gnb ul.mainMenu li{
+    float:left; /* �뿤�뜑 硫붾돱�뱾 �쇊履쎌쑝濡� �젙�젹*/
+    margin-right:80px; /* 硫붾돱留덈떎 留덉쭊 �삤瑜몄そ 媛� 80*/ 
+}
+header#gnb ul.snsMenu li{
+    float:right;
+    margin-left:30px;
+}
+header#gnb ul.snsMenu li a{
+    font-size:25px;
+}
+
+header#gnb ul li a{
+    font-size:20px;display: block;line-height: 60px;color:#323232;
+}
+
+.blank{
+    height:600px;position: relative;z-index: 1; 
+}
+.blank:after{
+    content: '';
+    position: absolute;top:0;bottom:0;left:0;right:0;background: rgba(0,0,0,.4);z-index: 2;
+}
+.team{
+    background:url(../img/team.jpeg) no-repeat center center / cover;
+    background-attachment: fixed; /* 諛곌꼍 �씠誘몄� �뒪�겕濡� �븯�뜑�씪�룄 怨좎젙 */
+}
+
+
+/* home 遺�遺� */
+section#home{
+    background:url(../img/homeBg.jpeg) no-repeat center center / cover;
+    height:800px;text-align:center;padding-top:150px;position:relative;z-index:1;
+}
+section#home:after{
+    content:'';top:0;bottom:0;left:0;right:0;z-index:-1;background:rgba(0,0,0,.4);position:absolute;
+}
+section#home .logoWrap{ 
+    margin-bottom:42px;
+}
+section#home .logoWrap img{width:100px;} 
+
+section#home .headTitle .star{
+    font-size:32px;color:rgba(250, 208, 0, 0.69);margin-bottom:63px;
+}
+section#home .headTitle h1{
+    margin-bottom:84px;
+}
+
+/* //--About */
+.textWrap{
+    width:720px;height:750px;margin:auto;
+}
+h3{text-align:center;margin-bottom:63px;}
+
+/* //Schedule-- */
+.match .head{text-align: center;} 
+.match .head strong{display:block;} 
+.match .body:after{
+    content:'';display:block;clear:both; 
+}
+.match .body{display:flex;justify-content: center;} 
+.match .body > div{}
+.match .tail{background:#ebebeb;padding:10px;text-align:right;}
+
+.match .body > div.vs{height:132px;line-height: 132px;font-size:40px;margin:0 30px;}
+
+/* //All Schedule-- */
+.matchs .head{text-align: center;}
+.matchs .head strong{display:block;}
+.matchs .body{display:flex;justify-content: center;}
+.matchs .body > div.vs{height:132px;line-height: 132px;font-size:40px;margin:0 30px;}
+/* //test-- */
+.matchs .body > div.test{width : 500px; line-height:5px; font-style:italic;
+                          font-size:20px;text-align:left;}
+
+/* //Players -- */
+/*#players{} */
+.eachPlayer{
+    margin-bottom:27px;
+}
+
+.imgWrap img{width:100%;} /* �꽑�닔 �씠誘몄� �꼫鍮� 100%*/
+.player-info{color:#fff;} /* �꽑�닔 �씠誘몄� 諛묒뿉 �닽�옄 �뀓�뒪�듃李� �깋源� �씛�깋 */
+.player-info > div{float:left;height:80px;transition:all 0.35s;} /* div �옄�넀�깭洹몄뿉留� �쟻�슜�븯�젮怨� 遺��벑�샇瑜� �벖�떎,  */
+.player-info .num{font-size:50px;line-height:80px;text-align:center;width:80px;background:#960707;}
+.player-info .text{
+    width:calc(100% - 80px);background:#cc3d3d; /*�꼫鍮꾩쓽 100%以묒뿉�꽌 80px瑜� #cc3d3d �깋�긽�쑝濡� 吏��젙 */
+    padding:14px;
+}
+
+/*
+ 留덉슦�뒪�삱�졇�쓣�븣 諛곌꼍�깋
+*/
+.eachPlayer:hover .player-info .num{
+    background:#002266; 
+}
+.eachPlayer:hover .player-info .text{
+    background:#2312b7;
+}
+
+.player-info .text span{display:block;}  /* block �궗�슜�븯硫� 以꾨컮轅� �릺�뼱 蹂댁엫 */
+.player-info .text span.name{font-size:20px;line-height: 28px;} 
+.player-info .text span.position{font-size:15px;}
+
+
+/* //popup*/
+.pop{width:1000px; border:1px solid #000;margin:auto;position: absolute;top:15%;left:0;right:0;margin:auto;z-index:10;background:#fff;display:none;} /* display:none 留뚮뱾吏� �븡�쑝硫� �떆媛곸쟻�쑝濡� �몴�떆 �븞�븿 */
+.pop .popWrap{background:#fff;padding-bottom:50px;}
+.pop .exit{position:absolute;width:50px;height:50px;line-height:44px;background:#fff;border:3px solid #000;color:#000;border-radius:50%;text-align: center;font-weight:bold;font-size:30px;box-sizing:border-box;right:-25px;top:-25px;cursor: pointer;}
+.pop:after{
+    content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:-1; /* �뙘 李쎌씠 �쑉怨� �뮮 諛곌꼍�쓣 rgba 0,0,0.5 濡� �꽕�젙*/
+}
+.pop .bg{
+    background:url(/img/bg1.jpg) no-repeat center center / cover;height:300px;padding:0 100px;
+}
+@keyframes show { /* �떆�옉�뿉�꽌 遺��꽣 �걹�궇 �븣 源뚯� �븷�땲硫붿씠�뀡 �쟻�슜�빐二쇰뒗 �냽�꽦 */
+    0%{opacity:0;left:-50px;} /*  �떆�옉�븷 �븣 -50px�뿉 �쐞移� */
+    100%{opacity:1;left:0;} /*  �걹�궇 �븣 0�뿉 �쐞移� */
+}
+.pop.start .bg span{animation-name: show;animation-fill-mode: forwards;} /* �븷�땲硫붿씠�뀡 �씠由꾩쓣 show濡� 吏��젙 forwards�뒗 湲곕낯�냽�꽦�쑝濡� �룎�븘�삤吏� �븡怨� �걹 吏��젏�뿉�꽌 硫덉텣�떎 */
+.pop.start .bg span:nth-child(1){animation-duration: 1s;} /* span�뿉 泥� 踰덉㎏ �옄�떇�슂�냼�씤 寃껋뿉 1珥� 吏��냽   */
+.pop.start .bg span:nth-child(2){animation-duration: 1s;animation-delay: 0.3s;} /* �뵜�젅�씠 0.3珥� 嫄몄뼱 嫄몄뼱以�*/
+.pop.start .bg span:nth-child(3){animation-duration: 1s;animation-delay: 0.5s;}
+
+.pop .bg span{color:#fff;display:block;position: relative;left:-50px;opacity:0;}
+.pop .bg span.num{padding:0 25px;;height:80px;line-height: 80px;font-size:60px;background:#960707;text-align:center;display:inline-block;margin-bottom:40px;margin-top:50px;font-weight:bold;}
+.pop .bg span.name{font-size:60px;margin-bottom:30px;font-weight:bold;}
+.pop .bg span.position{font-size:30px;}
+
+.pop .neck{width:800px;margin:0 auto 30px;border-bottom:1px solid #323232;}
+.pop .neck li{float:left;padding:0 15px;margin:30px 0; border-right:1px solid #ebebeb;}
+.pop .neck li:first-child{padding-left:0;}
+.pop .neck li strong{text-transform:uppercase;display:block;font-size:25px;} /* �뀓�뒪�듃 ��臾몄옄濡� 諛붽퓭以�*/
+
+/* .pop .neck .neckLink{display:block;float:right;line-height: 101px;font-size:30px;} 鍮쇰쾭由� */ 
+
+.pop .content{width:800px;margin:auto;}
+
+.pop .content p{height:138px;overflow:hidden;transition:all 0.3s;} /* �넂�씠 138px �꽆移섎뒗 遺�遺� 吏쒕쫫 */
+.pop .content p.open{height:600px;} /* �뿴�뿀�쓣 �븣 �넂�씠媛� 600px 吏��젙*/
+
+/* read more 遺�遺� */
+.pop .content .readMore{
+    line-height:50px;background:#ebebeb;text-align: center;
+    font-size:25px;cursor:pointer;transition:all 0.3s;
+} 
+/* read less 遺�遺� */
+.pop .content .readMore:hover{
+    color:#fff;background:#960707;
+}
+/* //makers-- */
+#makers .eachMaker{text-align:center;}
+#makers .eachMaker .makerCircle{
+    width:234px;height:271px;background:silver;
+    border-radius:200px;overflow:hidden;margin:auto; /* overflow ?? */
+    position:relative;} /* �씠誘몄� �뱾�뼱媛� ���썝*/
+
+#makers .eachMaker .makerCircle img{width:100%;} /* �씠誘몄� over out �깋�긽 �떎�떆 泥섎━ �븯湲� */
+#makers .eachMaker .makerCircle p{text-align:center;font-size:25px;position:absolute;top:10%;left:0;right:0;transition:all 0.35s;opacity:0;word-spacing: 20px;} /* word-spacing�� �븘�씠肄섍컙 媛꾧꺽//position 遺�遺� �솢 absolute�씤吏�?, opacity媛� �뼱�뼡 �슚怨쇱씤吏�?*/
+#makers .eachMaker .makerCircle p a{color:#FFFFFF;transition:all 0.2s;} /* �븘�씠肄� �깋源� �씛, */
+
+#makers .eachMaker .makerCircle:hover p{top:50%;opacity:1;} /* transition �븯�뒗�뜲 top�뿉�꽌 50�띁�꽱�듃 �븘�옒濡� transition */
+#makers .eachMaker .makerCircle:hover p a{text-decoration:none;color:#FFFFFF;} /* �븘�씠肄섏뿉 �뼵�뜑�씪�씤 �뾾�븷怨� hover �릱�쓣 �븣 �깋�� �씛*/
+
+/* //-- */
+
+/* //-- */
+
+/* //-- */
+/* //-- */
